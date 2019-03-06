@@ -1,0 +1,13 @@
+{
+  "name": "rollup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Lsmaxs",
+  "license": "MIT",
+  "scripts": {
+     "dev" : "rollup -c ./config/rollup.config.js" 
+  },
+  "dependencies": {
+    "rollup": "1.4.1"
+  }
+}
