@@ -7,7 +7,6 @@ const newArray = [...Array1,...Array2];
 
 const ArrayFlat = newArray.flat();
 
-
 console.log(`Array1:${Array1}`)
 console.log(`newArray:${newArray}`)
 console.log(`ArrayFlat:${ArrayFlat}`)

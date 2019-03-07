@@ -1,17 +1,16 @@
 (function () {
 	'use strict';
 
-	const Array1 = Array(10).fill(6);
+	var Array1 = Array(10).fill(6);
 
-	const Array2 = ['a','b','v','d'];
+	var Array2 = ['a','b','v','d'];
 
-	const newArray = [...Array1,...Array2];
+	var newArray = Array1.concat( Array2);
 
-	const ArrayFlat = newArray.flat();
+	var ArrayFlat = newArray.flat();
 
-
-	console.log(`Array1:${Array1}`);
-	console.log(`newArray:${newArray}`);
-	console.log(`ArrayFlat:${ArrayFlat}`);
+	console.log(("Array1:" + Array1));
+	console.log(("newArray:" + newArray));
+	console.log(("ArrayFlat:" + ArrayFlat));
 
 }());
