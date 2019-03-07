@@ -10,7 +10,7 @@ module.exports = {
     input: resolve('src/index.js'),
     output: {
         file: resolve('dist/dist.js'),
-        format: 'iife' // iife  cjs
+        format: 'umd' // iife  AMD
     },
     plugins: [ json(), buble() ]
 }

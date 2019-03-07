@@ -1,5 +1,7 @@
-(function () {
-	'use strict';
+(function (factory) {
+	typeof define === 'function' && define.amd ? define(factory) :
+	factory();
+}(function () { 'use strict';
 
 	var Array1 = Array(10).fill(6);
 
@@ -13,4 +15,4 @@
 	console.log(("newArray:" + newArray));
 	console.log(("ArrayFlat:" + ArrayFlat));
 
-}());
+}));
