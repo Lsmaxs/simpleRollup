@@ -91,8 +91,6 @@ const Array2 = ['a','b','v','d']
 
 const newArray = [...Array1,...Array2];
 
-const ArrayFlat = newArray.flat();
-
 async function initDemo () {
     let data = await Dome();
     console.log(data);
@@ -204,6 +202,7 @@ export default dome
     initDemo();
 
 }));
+
 ```
 
 ## 记录  
