@@ -1,0 +1,1 @@
+{"version":3,"file":"memo.js","sources":["../../src/memo/index.js"],"sourcesContent":["\nsetTimeout(()=>{\n    console.log('Hi 欢迎来到Rollup ─=≡Σ(((つ•̀ω•́)つ')\n},3000)"],"names":["setTimeout","console","log"],"mappings":";;AACAA,UAAU,CAAC,YAAI;EACXC,OAAO,CAACC,GAAR,CAAY,+BAAZ;CADM,EAER,IAFQ,CAAV"}
