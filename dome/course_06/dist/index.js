@@ -1,0 +1,1 @@
+!function(o,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(o=o||self).Demo=e()}(this,function(){"use strict";var o=function(){console.log("this lib/hello module!")},e=function(){console.log("this lib/world module!")};return{init:function(){console.log([].concat([1,2,3],[4,5,6])),o(),e()}}});

@@ -1,0 +1,1 @@
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?module.exports=o():"function"==typeof define&&define.amd?define(o):(e=e||self).World=o()}(this,function(){"use strict";return{init:function(){console.log("this lib/world module!")}}});
