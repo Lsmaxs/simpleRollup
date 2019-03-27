@@ -13,16 +13,16 @@ yarn add -D rollup
 yarn add -D @babel/core @babel/preset-env @babel/polyfill  @babel/runtime @babel/plugin-transform-runtime rollup-plugin-commonjs  rollup-plugin-node-resolve
 
 ## 安装 rollup.js 编译本地开发服务插件
-yarn add -D --save-dev rollup-plugin-serve
+yarn add -D  rollup-plugin-serve
 
 ## 安装 rollup.js 编译混淆压缩插件
-yarn add -D --save-dev rollup-plugin-uglify
+yarn add -D rollup-plugin-uglify
 
 ## 开发例子用到的依赖
-yarn add -D --save-dev chalk ## 日志样式模块
-yarn add -D --save-dev chokidar ## 目录监听模块
-yarn add -D --save-dev koa  koa-static ## 服务模块
-yarn add -D --save-dev koa-compose ## koa流程控制模块，用来控制流程编译
+yarn add -D chalk ## 日志样式模块
+yarn add -D chokidar ## 目录监听模块
+yarn add -D koa  koa-static ## 服务模块
+yarn add -D koa-compose ## koa流程控制模块，用来控制流程编译
 ```
 
 ## rollup打包配置拆分  

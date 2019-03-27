@@ -1,0 +1,17 @@
+
+$blue:rgb(32, 98, 240);
+body{
+    background: #f1f1f1;
+
+    h1{
+        color:$blue;
+    }
+
+    .text{
+        font-size: .8rem;
+        line-height: 2em;
+        span{
+            color:$blue;
+        }
+    }
+}

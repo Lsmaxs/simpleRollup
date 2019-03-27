@@ -1,0 +1,12 @@
+html {
+  font-size: 1rem; }
+
+body {
+  background: #f1f1f1; }
+  body h1 {
+    color: #2062f0; }
+  body .text {
+    font-size: .8rem;
+    line-height: 2em; }
+    body .text span {
+      color: #2062f0; }

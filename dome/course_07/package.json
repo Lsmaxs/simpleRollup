@@ -5,7 +5,7 @@
   "author": "Lsmaxs",
   "license": "MIT",
   "scripts": {
-    "dev": "rollup -c ./config/rollup.config.dev.js",
+    "dev": "rollup -c ./config/rollup.config.dev.js --watch",
     "prod": "rollup -c ./config/rollup.config.prod.js"
   },
   "dependencies": {},
@@ -16,12 +16,15 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/runtime": "^7.3.4",
+    "node-sass": "^4.11.0",
     "rollup": "1.4.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-uglify": "^6.0.2",
+    "rollup-watch": "^4.3.1"
   }
 }
