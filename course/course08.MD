@@ -19,13 +19,10 @@ yarn add -D node-sass
 yarn add -D  rollup-plugin-serve
 
 ## 安装 rollup.js 编译混淆压缩插件
-yarn add -D  rollup-plugin-uglify
+yarn add -D  rollup-plugin-uglify 
 
-## 开发例子用到的依赖
-yarn add -D  chalk ## 日志样式模块
-yarn add -D  chokidar ## 目录监听模块
-yarn add -D  koa  koa-static ## 服务模块
-yarn add -D  koa-compose ## koa流程控制模块，用来控制流程编译
+## 安装 rollup.js 编译 Typescript 代码的插件模块
+yarn add -D rollup-plugin-typescript typescript tslib
 ```
 
 ## rollup打包配置拆分  
@@ -39,6 +36,7 @@ const commonjs = require('rollup-plugin-commonjs')
 const babel = require('rollup-plugin-babel')
 const postcss = require('rollup-plugin-postcss');
 const sass = require('node-sass');
+const typescript = require('rollup-plugin-typescript');
 
 const isProductionEnv = process.env.NODE_ENV === 'production'
 
@@ -63,21 +61,22 @@ const processSass = function(context,paylpad){
 
 module.exports = {
     input: {
-        'dist':resolve('src/index.js'),
-        'sc/memo':resolve('src/memo/index.js')
+        'dist':resolve('src/index.ts'),
     },
     experimentalCodeSplitting:true,
     output:{
-        format: 'cjs', // iife  AMD
-        dir: 'dist'
+        format: 'iife', // iife  AMD
+        dir: 'dist',
+        name: 'TSDome',
     },
     plugins: [
         NodeResolve(),
         commonjs(),
-        babel({
-            runtimeHelpers: true,
-            exclude: 'node_modules/**' // 只编译我们的源代码
-        }),
+        // babel({
+        //     runtimeHelpers: true,
+        //     exclude: 'node_modules/**' // 只编译我们的源代码
+        // }),
+        typescript(),
         postcss({
             extract: true,
             minimize: isProductionEnv,
@@ -149,43 +148,50 @@ module.exports = baseConfig
 
 ## 待编译源码  
 
-- 源码路径`./src/index.js`
+- 源码路径`./src/index.ts`
 - 源码内容
 ```
-import Dome from './lib/dome.js'
+import delay from "./lib/delay";
 
-import './scss/index.scss';
-// todo ...
-
-```
-- 源码路径`./src/memo/index.js`
-- 源码内容
-```
-import "../scss/memo.scss";
-setTimeout(()=>{
-    console.log('Hi 欢迎来到Rollup ─=≡Σ(((つ•̀ω•́)つ')
-},3000)
-```
-
-- 源码路径`./src/scss/index.scss`
-- 源码内容
-```
-$blue:rgb(32, 98, 240);
-body{
-    background: #f1f1f1;
-
-    h1{
-        color:$blue;
-    }
-
-    .text{
-        font-size: .8rem;
-        line-height: 2em;
-        span{
-            color:$blue;
-        }
-    }
+async function dll(n: number) {
+  while (--n) {
+    await delay({
+      interval: 10,
+      num: greeter(n),
+    });
+  }
 }
+
+function greeter(person: any) {
+  return person * 2;
+}
+
+export default dll(100);
+
+```
+- 源码路径`./src/lib/delay.ts`
+- 源码内容
+```
+import { Person } from "../interface/Delay";
+const delay = (maka: Person) => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        console.log(maka.num, maka.arr);
+        resolve();
+    }, maka.interval));
+};
+export default delay;
+
+```
+
+- 源码路径`./src/interface/Delay.ts`
+- 源码内容
+```
+interface Person {
+  interval: number;
+  num: number;
+}
+
+export { Person };
 ```
 
 ## 编译结果
@@ -193,14 +199,15 @@ body{
 - 在dome目录下运行 `yarn run dev `
 - 编译结果就在目录 `./dist/` 下
   - ES5代码文件`./dist/dist.js`
-  - css文件`./dist/dist.css`
 - 插件本地服务启动，效果如下：
 ```
 rollup v1.4.1
-bundles /Users/sean/work/MyGitHhub/simpleRollup/dome/course_07/src/index.js, /Users/sean/work/MyGitHhub/simpleRollup/dome/course_07/src/memo/index.js → dist...
-created dist in 45ms
+bundles /Users/sean/work/MyGitHhub/simpleRollup/dome/course_08/src/index.ts → dist...
+http://localhost:3011 -> /Users/sean/work/MyGitHhub/simpleRollup/dome/course_08/view
+http://localhost:3011 -> /Users/sean/work/MyGitHhub/simpleRollup/dome/course_08/dist
+created dist in 222ms
 
-[2019-03-27 10:44:43] waiting for changes...
+[2019-03-29 15:03:02] waiting for changes...
 
 ```
 
@@ -216,15 +223,12 @@ created dist in 45ms
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>rollup course</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./dist.css">
 </head>
 
 <body>
-    <h1>This is course07</h1>
+    <h1>This is course08</h1>
     <section>/(ﾟ▽ﾟ)/</section>
-    <p class='text'>这是一份 <span>Scss</span>  编译测试Dome</p>
     <script src="./dist.js"></script>
-    <script src="./sc/memo.js"></script>
 
 </body>
 
@@ -237,4 +241,4 @@ created dist in 45ms
 
 ## 记录  
 
-主要讲述是，`rollup.js`编译 `*.css`文件的能力。顺便配置了 `*.scss`文件的编译配置。 `*.less`的配置雷同。
+主要讲述是，`rollup.js`编译`typescript`文件的配置，rollup的学习也基本告一段落了！ 撒花~
